@@ -1,6 +1,4 @@
 import './style.css';
-
-
 const fetchAPI = async () => {
   const baseURL = 'https://api.tvmaze.com/shows';
   const response = await fetch(baseURL);
