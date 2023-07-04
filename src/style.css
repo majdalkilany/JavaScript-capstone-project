@@ -1,5 +1,4 @@
 body {
-
   margin: 0; /* Remove default body margin */
   font-size: large;
 }
@@ -12,8 +11,6 @@ header {
   color: white;
   padding: 1rem 1rem;
 }
-
-
 
 ul {
   list-style: none;
@@ -28,14 +25,15 @@ ul {
 h1 {
   text-align: center;
 }
+
 a {
   text-transform: none;
-  color: #333; 
+  color: #333;
 }
 
 a:hover {
   text-decoration: underline;
-  color: #ff0000; 
+  color: #f00;
 }
 
 footer {
