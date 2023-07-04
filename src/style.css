@@ -1,3 +1,55 @@
 body {
-  box-sizing: border-box;
+
+  margin: 0; /* Remove default body margin */
+  font-size: large;
+}
+
+header {
+  margin-bottom: 1rem; /* Add margin at the bottom */
+  background: #413c3c;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 1rem 1rem;
+}
+
+
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-transform: capitalize;
+  gap: 1.1rem;
+}
+
+h1 {
+  text-align: center;
+}
+a {
+  text-transform: none;
+  color: #333; 
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ff0000; 
+}
+
+footer {
+  height: 17vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgb(223, 216, 216);
+  background-color: #fff;
+}
+
+footer p {
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
 }
