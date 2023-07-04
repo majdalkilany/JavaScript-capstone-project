@@ -1,0 +1,30 @@
+body {
+  margin: 0; /* Remove default body margin */
+  font-size: large;
+}
+
+header {
+  margin-bottom: 1rem; /* Add margin at the bottom */
+  background: #413c3c;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 1rem 1rem;
+}
+
+
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-transform: capitalize;
+  gap: 1.1rem;
+}
+
+h1 {
+  text-align: center;
+}
+
