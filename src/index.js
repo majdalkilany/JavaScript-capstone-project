@@ -1,10 +1,11 @@
 import './style.css';
 import { fetchAPI } from './modules/api.js';
 import { displayData } from './modules/utils.js';
+
 const showListContainer = document.getElementById('show-list');
 
 fetchAPI()
-  .then(shows => {
+  .then((shows) => {
     shows.forEach((show) => {
       const showTitle = show.name;
       const showImage = show.image.medium;
@@ -26,4 +27,4 @@ fetchAPI()
 
     displayData(shows);
   })
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));

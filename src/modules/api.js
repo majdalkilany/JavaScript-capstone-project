@@ -1,4 +1,4 @@
-const APP_ID = "DUanzoHMk8l8HLimHh6p";
+const APP_ID = 'DUanzoHMk8l8HLimHh6p';
 
 export const fetchAPI = async () => {
   const baseURL = 'https://api.tvmaze.com/shows';
@@ -40,7 +40,7 @@ export const updateLikeCount = async (itemId) => {
 
     const likesCountElement = document.getElementById(`likes-count-${itemId}`);
     if (likesCountElement) {
-      const likesCount = parseInt(likesCountElement.textContent) + 1;
+      const likesCount = parseInt(likesCountElement.textContent, 10) + 1;
       likesCountElement.textContent = likesCount;
     }
   } catch (e) {
