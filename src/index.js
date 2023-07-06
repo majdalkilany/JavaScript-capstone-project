@@ -46,6 +46,7 @@ const updateLikeCount = async (itemId) => {
     .then((result) => console.log(result))
     .catch((error) => console.log('error', error));
 
+
   // Update the like count on the page
   const likesCountElement = document.getElementById(`likes-count-${itemId}`);
   if (likesCountElement) {
@@ -82,6 +83,7 @@ fetchAPI()
     </div>`;
         runModal(show);
       });
+
       showListContainer.appendChild(listItem);
       // Update like count when Like button is clicked
       const likeButton = listItem.querySelector('.likes');
@@ -90,5 +92,6 @@ fetchAPI()
         updateLikeCount(itemId);
       });
     });
-  })
+
   .catch((err) => console.log(err));
+
