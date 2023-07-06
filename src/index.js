@@ -46,7 +46,6 @@ const updateLikeCount = async (itemId) => {
     .then((result) => console.log(result))
     .catch((error) => console.log('error', error));
 
-
   // Update the like count on the page
   const likesCountElement = document.getElementById(`likes-count-${itemId}`);
   if (likesCountElement) {
@@ -92,6 +91,5 @@ fetchAPI()
         updateLikeCount(itemId);
       });
     });
-
+  })
   .catch((err) => console.log(err));
-
