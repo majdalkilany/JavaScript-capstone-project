@@ -1,16 +1,4 @@
-import { likesCounter } from '../modules/likesCounter';
-
-// describe('likesCounter', () => {
-//   it('should expose a function', () => {
-// 		expect(likesCounter).toBeDefined();
-// 	});
-  
-//   it('likesCounter should return expected output', () => {
-//     const retValue = likesCounter();
-//     console.log(retValue);
-//     expect(false).toBeTruthy();
-//   });
-// });
+import { likesCounter } from '../modules/likesCounter.js';
 
 describe('likesCounter', () => {
   beforeEach(() => {
