@@ -1,4 +1,3 @@
-
 import { runModal } from './modules/modal.js';
 
 import './style.css';
