@@ -1,6 +1,7 @@
 body {
   margin: 0; /* Remove default body margin */
   font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
