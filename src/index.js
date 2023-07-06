@@ -10,7 +10,7 @@ const fetchAPI = async () => {
   const baseURL = 'https://api.tvmaze.com/shows';
   const response = await fetch(baseURL);
   const data = await response.json();
-  shows = data.slice(0, 25);
+  shows = data.slice(0, 30);
 
   const likes = await getLikes();
   shows.forEach((show) => {
