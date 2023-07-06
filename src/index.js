@@ -84,9 +84,12 @@ fetchAPI()
       btn.addEventListener('click', () => {
         const modal = document.getElementById('myModal');
         modal.innerHTML = ` <div class="modal-content">
-          <span class="close">&times;</span>
-          <h6>MovieShow</h6>
-        </div>`;
+
+      <span class="close" >&times;</span>
+      <h6>MovieShow</h6>
+
+    </div>`;
+
         runModal(show);
       });
 
