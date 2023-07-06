@@ -1,4 +1,5 @@
 import './style.css';
+
 const APP_ID = 'DUanzoHMk8l8HLimHh6p';
 let shows;
 const fetchAPI = async () => {
@@ -42,14 +43,13 @@ const updateLikeCount = async (itemId) => {
     .then((response) => response.text())
     .then((result) => console.log(result))
     .catch((error) => console.log('error', error));
- 
-    // Update the like count on the page
+
+  // Update the like count on the page
   const likesCountElement = document.getElementById(`likes-count-${itemId}`);
   if (likesCountElement) {
     const likesCount = parseInt(likesCountElement.textContent, 10) + 1;
     likesCountElement.textContent = likesCount;
   }
-  
 };
 fetchAPI()
   .then(() => {
