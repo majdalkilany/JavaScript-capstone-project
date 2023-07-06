@@ -144,6 +144,13 @@ footer p {
   font-weight: bold;
 }
 
+#close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .close:hover,
 .close:focus {
   color: #000;

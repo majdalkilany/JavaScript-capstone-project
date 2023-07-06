@@ -12,18 +12,6 @@ export const runModal = ({
   const modal = document.getElementById('myModal');
   const modalContent = document.querySelector('.modal-content');
 
-  // Get the <span> element that closes the modal
-  const span = document.getElementsByClassName('close')[0];
-
-  // When the user clicks the button, open the modal
-  modal.style.display = 'block';
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = () => {
-    modal.style.display = 'none';
-    modalContent.textContent = '';
-  };
-
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = (event) => {
     if (event.target === modal) {
@@ -37,6 +25,7 @@ export const runModal = ({
   modalContent.appendChild(descriptionContainer);
 
   modalContent.innerHTML = `
+  <span class="close" >&times;</span>
   <h6>MovieShow</h6>
   <div class= "modal-content-container">
   <img src="${original}" alt="${name}" class= "img-preview">
@@ -51,4 +40,17 @@ export const runModal = ({
   </div>
  
   `;
+  // Get the <span> element that closes the modal
+  const span = document.querySelector('.close');
+  console.log(span);
+
+  // When the user clicks the button, open the modal
+  modal.style.display = 'block';
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = () => {
+    // console.log(span);
+    modal.style.display = 'none';
+    modalContent.textContent = '';
+  };
 };
