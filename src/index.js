@@ -1,3 +1,5 @@
+import { runModal } from './modules/modal.js';
+
 import './style.css';
 
 const APP_ID = 'DUanzoHMk8l8HLimHh6p';
@@ -64,12 +66,23 @@ fetchAPI()
         <img src="${showImage}" alt="${showTitle}">
         <h2 class="title">${showTitle}</h2>
         <div class="interact">
-          <button class="comments">Comment</button>
+          <button class="comments myBtn">Comment</button>
           <button class="likes" data-item-id="${itemId}"><i class="far fa-heart"></i></button>
           <span class="likes-count" id="likes-count-${itemId}">${show.likes}</span>
         </div>
         <hr>
       `;
+      const btn = listItem.querySelector('.myBtn');
+      btn.addEventListener('click', () => {
+        const modal = document.getElementById('myModal');
+        modal.innerHTML = ` <div class="modal-content">
+      <span class="close">&times;</span>
+      <h6>MovieShow</h6>
+
+    </div>`;
+        runModal(show);
+      });
+
       showListContainer.appendChild(listItem);
       // Update like count when Like button is clicked
       const likeButton = listItem.querySelector('.likes');
