@@ -1,4 +1,5 @@
 import './style.css';
+import { runModal } from './modules/modal.js';
 
 const APP_ID = 'DUanzoHMk8l8HLimHh6p';
 let shows;
@@ -6,6 +7,36 @@ const fetchAPI = async () => {
   const baseURL = 'https://api.tvmaze.com/shows';
   const response = await fetch(baseURL);
   const data = await response.json();
+
+  const shows = data.slice(0, 15);
+
+  // Display the show list in the HTML
+  const showListContainer = document.getElementById('show-list');
+  shows.forEach((show) => {
+    const showTitle = show.name;
+    const showImage = show.image.medium;
+
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+      <img src="${showImage}" alt="${showTitle}">
+      <h2 class="title">${showTitle}</h2>
+      <div class="interact">
+        <button class="comments myBtn" >Comment</button>
+      </div>
+      <hr>
+    `;
+    const btn = listItem.querySelector('.myBtn');
+    btn.addEventListener('click', () => {
+      const modal = document.getElementById('myModal');
+      modal.innerHTML = ` <div class="modal-content">
+      <span class="close">&times;</span>
+      <h6>MovieShow</h6>
+
+    </div>`;
+      runModal(show);
+    });
+    showListContainer.appendChild(listItem);
+
   shows = data.slice(0, 15);
   // Fetch likes count for each item and combine with base API data
   const likes = await getLikes();
@@ -13,6 +44,7 @@ const fetchAPI = async () => {
     const itemId = show.id;
     const likeData = likes.find((item) => item.item_id === itemId);
     show.likes = likeData ? likeData.likes : 0;
+
   });
 };
 const getLikes = async () => {
@@ -43,6 +75,9 @@ const updateLikeCount = async (itemId) => {
     .then((response) => response.text())
     .then((result) => console.log(result))
     .catch((error) => console.log('error', error));
+
+
+fetchAPI().catch((error) => console.log(error));
 
   // Update the like count on the page
   const likesCountElement = document.getElementById(`likes-count-${itemId}`);
@@ -80,3 +115,4 @@ fetchAPI()
     });
   })
   .catch((err) => console.log(err));
+
