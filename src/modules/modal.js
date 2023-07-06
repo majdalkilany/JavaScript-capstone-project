@@ -1,4 +1,3 @@
-import { formToJSON } from 'axios';
 import { postComments } from './post-comments.js';
 
 export const runModal = async ({
@@ -79,10 +78,13 @@ export const runModal = async ({
     postComments(username, comment, itemId);
     event.target.reset();
   });
-  // eslint-disable-next-line camelcase
-  commentsAPI.forEach(({ username, comment, creation_date }) => {
-    renderComments(username, comment, creation_date);
-  });
+
+  if (commentsAPI.length >= 1) {
+    // eslint-disable-next-line camelcase
+    commentsAPI.forEach(({ username, comment, creation_date }) => {
+      renderComments(username, comment, creation_date);
+    });
+  }
 };
 
 const renderComments = (username, commentMessage, createdTime) => {
