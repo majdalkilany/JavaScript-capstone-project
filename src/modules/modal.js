@@ -1,4 +1,5 @@
 import { postComments } from './post-comments.js';
+import { commentsCounterPopup } from './commentsCounterPopup.js';
 
 export const runModal = async ({
   id,
@@ -9,7 +10,6 @@ export const runModal = async ({
   image: { original },
 }) => {
   const commentsAPI = await fetchAPI(id);
-  console.log(commentsAPI);
   const modal = document.getElementById('myModal');
   const modalContent = document.querySelector('.modal-content');
 
@@ -40,6 +40,7 @@ export const runModal = async ({
 
   </div>
   <div id="comments-container">
+  <h6 id="commentsCount"></h6>
 
 </div>
   <form action="POST" id="myForm">
@@ -77,6 +78,7 @@ export const runModal = async ({
     renderComments(username, comment);
     postComments(username, comment, itemId);
     event.target.reset();
+    commentsCounterPopup();
   });
 
   if (commentsAPI.length >= 1) {
@@ -85,6 +87,7 @@ export const runModal = async ({
       renderComments(username, comment, creation_date);
     });
   }
+  commentsCounterPopup();
 };
 
 const renderComments = (username, commentMessage, createdTime) => {
