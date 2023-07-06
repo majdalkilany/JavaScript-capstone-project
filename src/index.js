@@ -1,3 +1,5 @@
+import { runModal } from './modules/modal.js';
+
 import './style.css';
 import { commentsCounter } from './modules/commentsCounter.js';
 import { likesCounter } from './modules/likesCounter.js';
@@ -10,8 +12,9 @@ const fetchAPI = async () => {
   const baseURL = 'https://api.tvmaze.com/shows';
   const response = await fetch(baseURL);
   const data = await response.json();
-  shows = data.slice(0, 25);
 
+  shows = data.slice(0, 15);
+  // Fetch likes count for each item and combine with base API data
   const likes = await getLikes();
   shows.forEach((show) => {
     const itemId = show.id;
@@ -71,14 +74,23 @@ fetchAPI()
         <img src="${showImage}" alt="${showTitle}">
         <h2 class="title">${showTitle}</h2>
         <div class="interact">
-          <button class="comments">Comment</button>
+          <button class="comments myBtn">Comment</button>
           <button class="likes" data-item-id="${itemId}"><i class="far fa-heart"></i></button>
           <span class="likes-count" id="likes-count-${itemId}">${show.likes}</span>
         </div>
         <hr>
       `;
-      showListContainer.appendChild(listItem);
+      const btn = listItem.querySelector('.myBtn');
+      btn.addEventListener('click', () => {
+        const modal = document.getElementById('myModal');
+        modal.innerHTML = ` <div class="modal-content">
+          <span class="close">&times;</span>
+          <h6>MovieShow</h6>
+        </div>`;
+        runModal(show);
+      });
 
+      showListContainer.appendChild(listItem);
       const likeButton = listItem.querySelector('.likes');
       likeButton.addEventListener('click', () => {
         const { itemId } = likeButton.dataset;
@@ -97,7 +109,6 @@ fetchAPI()
 
     commentsCounterElement.textContent = commentsCount;
     likesCounterElement.textContent = likesCount;
-
     moviesCounterElement.textContent = moviesCount;
     allMoviesCounterElement.textContent = moviesCount;
   })
