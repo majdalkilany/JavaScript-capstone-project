@@ -1,14 +1,16 @@
-// Get the modal
+import { formToJSON } from 'axios';
+import { postComments } from './post-comments.js';
 
-// Get the button that opens the modal
-
-export const runModal = ({
+export const runModal = async ({
+  id,
   name,
   summary,
   language,
   genres,
   image: { original },
 }) => {
+  const commentsAPI = await fetchAPI(id);
+  console.log(commentsAPI);
   const modal = document.getElementById('myModal');
   const modalContent = document.querySelector('.modal-content');
 
@@ -29,7 +31,6 @@ export const runModal = ({
   <h6>MovieShow</h6>
   <div class= "modal-content-container">
   <img src="${original}" alt="${name}" class= "img-preview">
-  
   <div class= "modal-description">
   <h3> title : ${name}</h3>
   <h4> language : ${language} </h4>
@@ -37,8 +38,24 @@ export const runModal = ({
   <p>  <span class="summary">Summary</span> : ${summary}  </p>
   <br><br>
   </div>
+
   </div>
- 
+  <div id="comments-container">
+
+</div>
+  <form action="POST" id="myForm">
+  <input type="hidden" name="item_id" id="item_id" value="${id}">
+
+  <input type="text" name="username"
+   id="username"
+   placeholder="Enter your name ..."> <br> <br>
+  <textarea id="comment"
+   name="comment"
+   rows="4" cols="40"
+   placeholder="Enter your comment here..."></textarea><br>
+   <input type="submit" value="comment" class="comments">
+</form>
+
   `;
   // Get the <span> element that closes the modal
   const span = document.querySelector('.close');
@@ -53,4 +70,50 @@ export const runModal = ({
     modal.style.display = 'none';
     modalContent.textContent = '';
   };
+  document.getElementById('myForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const comment = document.getElementById('comment').value;
+    const itemId = document.getElementById('item_id').value;
+    renderComments(username, comment);
+    postComments(username, comment, itemId);
+    event.target.reset();
+  });
+  // eslint-disable-next-line camelcase
+  commentsAPI.forEach(({ username, comment, creation_date }) => {
+    renderComments(username, comment, creation_date);
+  });
+};
+
+const renderComments = (username, commentMessage, createdTime) => {
+  const commentsContainer = document.getElementById('comments-container');
+  const divElement = document.createElement('div');
+  divElement.classList.add('div-element-comments');
+  commentsContainer.appendChild(divElement);
+  const commenterName = document.createElement('h6');
+  commenterName.classList.add('commenter-name');
+  commenterName.textContent = username;
+  divElement.appendChild(commenterName);
+  const comment = document.createElement('p');
+  comment.classList.add('comment');
+  comment.textContent = commentMessage;
+  divElement.appendChild(comment);
+
+  if (!createdTime) {
+    const creationDate = new Date();
+    [createdTime] = creationDate.toISOString().split('T');
+  }
+
+  const createdAt = document.createElement('span');
+  createdAt.classList.add('span-time');
+  createdAt.textContent = `at: ${createdTime}`;
+  comment.appendChild(createdAt);
+};
+
+const fetchAPI = async (id) => {
+  const baseURL = `
+    https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/DUanzoHMk8l8HLimHh6p/comments?item_id=${id}`;
+  const response = await fetch(baseURL);
+  const data = await response.json();
+  return data;
 };

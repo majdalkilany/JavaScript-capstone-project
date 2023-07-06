@@ -159,14 +159,14 @@ footer p {
 }
 
 .img-preview {
-  height: 50rem;
+  height: 30rem;
   width: 30rem;
 }
 
 .modal-content-container {
   display: flex;
   gap: 3rem;
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
 }
 
 h6 {
@@ -175,4 +175,51 @@ h6 {
 
 .summary {
   font-weight: bolder;
+}
+
+form {
+  padding: 3rem;
+  padding-left: 0;
+}
+
+.span-time {
+  padding: 2rem;
+  padding-top: 0;
+  font-size: small;
+}
+
+.commenter-name {
+  padding: 2rem;
+  padding-bottom: 0;
+  margin: 0;
+  font-size: medium;
+}
+
+.comment {
+  padding-left: 2rem;
+}
+
+.div-element-comments {
+  padding-bottom: 1rem;
+  width: 40%;
+}
+
+textarea {
+  padding: 0.75rem 1.5rem;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+#username {
+  padding: 0.75rem 1.5rem;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
 }
