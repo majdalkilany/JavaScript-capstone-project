@@ -65,7 +65,7 @@ This project is built with:
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-See the ShowMovie project <a href=""> here</a>
+See the ShowMovie project <a href="https://majdalkilany.github.io/JavaScript-capstone-project/dist/"> here</a>
 
 <!-- GETTING STARTED -->
 
