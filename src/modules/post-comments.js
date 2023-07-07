@@ -4,7 +4,6 @@ export const postComments = async (username, comment, itemId) => {
   const myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
   myHeaders.append('Authorization', 'Basic bWFqZDowMDAw');
-  console.log(itemId);
   const raw = JSON.stringify({
     item_id: Number(itemId),
     comment,
@@ -21,6 +20,6 @@ export const postComments = async (username, comment, itemId) => {
     requestOptions
   )
     .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log('error', error));
+    .then((result) => result)
+    .catch((error) => error);
 };

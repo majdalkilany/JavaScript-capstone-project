@@ -52,8 +52,8 @@ const updateLikeCount = async (itemId) => {
     requestOptions
   )
     .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log('error', error));
+    .then((result) => result)
+    .catch((error) => error);
 
   const likesCountElement = document.getElementById(`likes-count-${itemId}`);
   if (likesCountElement) {
@@ -115,4 +115,4 @@ fetchAPI()
     moviesCounterElement.textContent = moviesCount;
     allMoviesCounterElement.textContent = moviesCount;
   })
-  .catch((err) => console.log(err));
+  .catch((err) => err);

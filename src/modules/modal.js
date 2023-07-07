@@ -59,14 +59,12 @@ export const runModal = async ({
   `;
   // Get the <span> element that closes the modal
   const span = document.querySelector('.close');
-  console.log(span);
 
   // When the user clicks the button, open the modal
   modal.style.display = 'block';
 
   // When the user clicks on <span> (x), close the modal
   span.onclick = () => {
-    // console.log(span);
     modal.style.display = 'none';
     modalContent.textContent = '';
   };
