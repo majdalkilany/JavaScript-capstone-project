@@ -1,10 +1,10 @@
 body {
-  margin: 0; /* Remove default body margin */
+  margin: 0;
   font-size: large;
 }
 
 header {
-  margin-bottom: 1rem; /* Add margin at the bottom */
+  margin-bottom: 1rem;
   background: #413c3c;
   display: flex;
   justify-content: space-between;
@@ -75,7 +75,7 @@ h1 {
 .likes i {
   color: red;
   font-size: 20px;
-  transition: color 0.3s ease-in-out; /* Added transition */
+  transition: color 0.3s ease-in-out;
 }
 
 .likes:hover i {
@@ -222,4 +222,31 @@ textarea {
   background-color: #f8f8f8;
   font-size: 16px;
   resize: none;
+}
+
+/* Media queries for mobile devices */
+@media only screen and (max-width: 767px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  ul {
+    gap: 0.5rem;
+    height: auto;
+  }
+
+  #show-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modal-content-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .div-element-comments {
+    width: 100%;
+  }
 }
